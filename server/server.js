@@ -13,21 +13,19 @@ dotenv.config();
 const app = express();
 
 // Configs
-const PORT = process.env.PORT || 5000;   // ✅ use uppercase PORT
-const MONGO_URI = process.env.LIVE_URL;  // from .env
+const PORT = process.env.PORT || 5000;   // ✅ uppercase
+const MONGO_URI = process.env.LIVE_URL;  
 const CLIENT_ORIGIN = [
   "http://localhost:3000",
-  "https://travelmate10.netlify.app"  // replace with your actual Netlify URL
+  "https://travelmate10.netlify.app"   // ✅ your Netlify domain
 ];
 
+// Middleware
 app.use(cors({
   origin: CLIENT_ORIGIN,
   credentials: true
 }));
-// frontend React app
 
-// Middleware
-app.use(cors({ origin: CLIENT_ORIGIN, credentials: true }));
 app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ limit: "10mb", extended: true }));
 app.use(morgan("dev"));
