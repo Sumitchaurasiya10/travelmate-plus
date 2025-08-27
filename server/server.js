@@ -14,14 +14,21 @@ const MONGO_URI = process.env.LIVE_URL;
 
 const allowedOrigins = [
   "http://localhost:3000",
-  "https://travelmate10.netlify.app"
+  "https://travelmate10.netlify.app",
+  "https://68aed92a68a50f179084aac4--travelmate10.netlify.app"  // ✅ Add your actual Netlify URL
 ];
 
 // CORS middleware
 app.use(cors({
   origin: (origin, callback) => {
-    console.log("Request origin:", origin); // Debug log
-    if (!origin || allowedOrigins.includes(origin)) {
+    console.log("Request origin:", origin);
+    
+    // Allow requests with no origin (mobile apps, Postman, etc.)
+    if (!origin) return callback(null, true);
+    
+    // Check if origin is in allowed list OR matches Netlify pattern
+    if (allowedOrigins.includes(origin) || 
+        origin.includes('travelmate10.netlify.app')) {
       callback(null, true);
     } else {
       callback(new Error("Not allowed by CORS"));
@@ -29,7 +36,6 @@ app.use(cors({
   },
   credentials: true
 }));
-
 // Middleware
 app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ limit: "10mb", extended: true }));
