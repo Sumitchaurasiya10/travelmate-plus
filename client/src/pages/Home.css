@@ -1,0 +1,35 @@
+.home-container {
+  min-height: 100vh;
+  background: linear-gradient(
+    135deg,
+    #00a896,
+    #4cc9f0,
+    #f3722c,
+    #ffd60a
+  );
+  background-size: 400% 400%;
+  animation: gradientBG 12s ease infinite;
+  color: #fff;
+  padding: 2rem;
+}
+
+.brand-text {
+  color: #ffd60a;
+  text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.btn-primary {
+  background-color: #00a896 !important;
+  border-color: #00a896 !important;
+}
+
+.btn-outline-light:hover {
+  background-color: #ffd60a !important;
+  color: #000 !important;
+}

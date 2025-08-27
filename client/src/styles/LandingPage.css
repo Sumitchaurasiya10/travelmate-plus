@@ -1,0 +1,101 @@
+/* Background gradient animation */
+.landing-page {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #6EE7B7, #3B82F6);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  overflow: hidden;
+  color: white;
+}
+
+@keyframes gradientBG {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
+}
+
+.landing-content {
+  background: rgba(255,255,255,0.1);
+  padding: 40px 60px;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  z-index: 10;
+}
+
+.landing-content h1 {
+  font-size: 3rem;
+  text-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.landing-content p {
+  font-size: 1.3rem;
+  margin-top: 15px;
+}
+
+.btn-start {
+  margin-top: 25px;
+  padding: 12px 30px;
+  border-radius: 50px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #3B82F6;
+  background-color: white;
+  border: none;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.btn-start:hover {
+  transform: scale(1.1);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+}
+
+/* Floating travel icons */
+.floating-icons .icon {
+  position: absolute;
+  font-size: 2.5rem;
+  animation: float 6s ease-in-out infinite;
+}
+
+.floating-icons .plane { top: 20%; left: 10%; animation-delay: 0s;}
+.floating-icons .globe { top: 50%; left: 85%; animation-delay: 2s;}
+.floating-icons .backpack { top: 70%; left: 20%; animation-delay: 4s;}
+.floating-icons .luggage { top: 35%; left: 50%; animation-delay: 1s;}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0);}
+  50% { transform: translateY(-20px);}
+}
+
+/* Floating bubbles */
+.bubbles .bubble {
+  position: absolute;
+  background: rgba(255,255,255,0.2);
+  border-radius: 50%;
+  animation: bubbleMove 10s linear infinite;
+}
+
+.bubble-0 { width: 30px; height: 30px; bottom: 0; left: 10%; animation-delay: 0s;}
+.bubble-1 { width: 15px; height: 15px; bottom: 0; left: 25%; animation-delay: 2s;}
+.bubble-2 { width: 20px; height: 20px; bottom: 0; left: 40%; animation-delay: 4s;}
+.bubble-3 { width: 25px; height: 25px; bottom: 0; left: 60%; animation-delay: 1s;}
+.bubble-4 { width: 18px; height: 18px; bottom: 0; left: 75%; animation-delay: 3s;}
+/* Repeat bubbles 5-9 similarly */
+
+@keyframes bubbleMove {
+  0% { transform: translateY(0) scale(1);}
+  50% { transform: translateY(-150px) scale(1.2);}
+  100% { transform: translateY(-300px) scale(1);}
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .landing-content h1 { font-size: 2.2rem; }
+  .landing-content p { font-size: 1rem; }
+}

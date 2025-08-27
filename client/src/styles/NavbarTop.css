@@ -1,0 +1,61 @@
+/* src/styles/NavbarTop.css */
+
+/* Navbar background */
+.custom-navbar {
+  background: linear-gradient(90deg, #4facfe, #00f2fe);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Brand Logo */
+.custom-navbar .navbar-brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fff !important;
+  transition: transform 0.2s ease-in-out;
+}
+
+.custom-navbar .navbar-brand:hover {
+  transform: scale(1.05);
+}
+
+/* Nav Links */
+.custom-navbar .nav-link {
+  color: #fff !important;
+  margin-right: 15px;
+  transition: color 0.2s ease;
+}
+
+.custom-navbar .nav-link:hover {
+  color: #ffe066 !important;
+}
+
+/* Buttons */
+.custom-navbar .btn-outline-primary {
+  border-color: #fff;
+  color: #fff;
+}
+
+.custom-navbar .btn-outline-primary:hover {
+  background-color: #fff;
+  color: #4facfe;
+}
+
+.custom-navbar .btn-primary {
+  background-color: #ffe066;
+  border: none;
+  color: #000;
+}
+
+.custom-navbar .btn-primary:hover {
+  background-color: #ffd43b;
+}
+
+.custom-navbar .btn-outline-danger {
+  border-color: #fff;
+  color: #fff;
+}
+
+.custom-navbar .btn-outline-danger:hover {
+  background-color: #ff6b6b;
+  color: #fff;
+}

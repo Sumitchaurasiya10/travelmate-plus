@@ -1,0 +1,77 @@
+/* Background */
+.dashboard-bg {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #4facfe, #00f2fe);
+  padding-bottom: 50px;
+}
+
+/* Header */
+.dashboard-header h3 {
+  font-size: 1.8rem;
+  letter-spacing: 0.5px;
+}
+
+/* Glassmorphism Buttons */
+.btn-glass {
+  background: rgba(255, 255, 255, 0.15);
+  border: none;
+  backdrop-filter: blur(10px);
+  color: #fff;
+  transition: all 0.3s ease;
+}
+.btn-glass:hover {
+  background: rgba(255, 255, 255, 0.35);
+  color: #000;
+}
+
+/* Card Glass Effect */
+.card-glass {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  backdrop-filter: blur(12px);
+  padding: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card-glass:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* Chart Card */
+.glass-chart {
+  background: rgba(255, 255, 255, 0.25) !important;
+  border-radius: 16px !important;
+  backdrop-filter: blur(15px);
+  color: #333;
+}
+
+/* Filter Select */
+.filter-select {
+  max-width: 200px;
+  border-radius: 12px;
+  border: none;
+  padding: 8px 12px;
+}
+
+
+/* Chart Styling */
+.glass-chart {
+  position: relative;
+  background: rgba(255, 255, 255, 0.15) !important;
+  border-radius: 20px !important;
+  backdrop-filter: blur(12px);
+  padding: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-chart:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+}
+
+.glass-chart h5 {
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
