@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { Container, Row, Col, Button, Form, Badge, Card } from 'react-bootstrap';
 import API from '../services/api';
 import TravelCard from '../components/TravelCard';
@@ -15,22 +15,22 @@ export default function Dashboard() {
   const [budgetType, setBudgetType] = useState('monthly');
   const user = JSON.parse(localStorage.getItem('user') || 'null');
 
-  const load = async () => {
+  // ✅ useCallback for stable load function
+  const load = useCallback(async () => {
     const res = await API.get('/travel', {
       params: {
-        visited: filter === 'visited' ? true : filter === 'planned' ? false : undefined
-      }
+        visited: filter === 'visited' ? true : filter === 'planned' ? false : undefined,
+      },
     });
     setItems(res.data.data);
 
     const b = await API.get('/travel/budget/summary', { params: { type: budgetType } });
     setBudget(b.data.data);
-  };
+  }, [filter, budgetType]);
 
- useEffect(() => {
-  load();
-}, [filter, budgetType, load]);
-
+  useEffect(() => {
+    load();
+  }, [load]);
 
   // ✅ Save function
   const save = async (form) => {
@@ -63,7 +63,6 @@ export default function Dashboard() {
     const res = await API.put('/auth/toggle-share');
     alert(res.data.shareEnabled ? 'Public sharing enabled' : 'Public sharing disabled');
   };
-  // ... other functions like save, onDelete, onMarkVisited, toggleShare
 
   return (
     <div className="dashboard-bg">
@@ -83,7 +82,7 @@ export default function Dashboard() {
         {/* Filters + Budget Type */}
         <Row className="mb-4">
           <Col md={6} className="d-flex gap-2 align-items-center">
-            <Form.Select className="filter-select" value={filter} onChange={(e)=>setFilter(e.target.value)}>
+            <Form.Select className="filter-select" value={filter} onChange={(e) => setFilter(e.target.value)}>
               <option value="all">All</option>
               <option value="planned">Planned</option>
               <option value="visited">Visited</option>
@@ -91,8 +90,7 @@ export default function Dashboard() {
           </Col>
 
           <Col md={6} className="d-flex gap-2 justify-content-md-end align-items-center mt-3 mt-md-0">
-            {/* NEW: Budget Type Selector */}
-            <Form.Select className="filter-select" value={budgetType} onChange={(e)=>setBudgetType(e.target.value)}>
+            <Form.Select className="filter-select" value={budgetType} onChange={(e) => setBudgetType(e.target.value)}>
               <option value="daily">Daily</option>
               <option value="monthly">Monthly</option>
               <option value="yearly">Yearly</option>
@@ -111,7 +109,7 @@ export default function Dashboard() {
                       item={it}
                       onMarkVisited={onMarkVisited}
                       onDelete={onDelete}
-                      onEdit={(itm)=>{ setEditing(itm); setShowForm(true); }}
+                      onEdit={(itm) => { setEditing(itm); setShowForm(true); }}
                     />
                   </div>
                 </Col>
@@ -123,10 +121,10 @@ export default function Dashboard() {
               <h5 className="mb-3 text-center">
                 Budget Tracker ({budgetType.charAt(0).toUpperCase() + budgetType.slice(1)})
               </h5>
-              <BudgetChart 
-                plannedTotal={budget.plannedTotal} 
-                actualTotal={budget.actualTotal} 
-                budgetType={budgetType}  // ✅ Pass prop
+              <BudgetChart
+                plannedTotal={budget.plannedTotal}
+                actualTotal={budget.actualTotal}
+                budgetType={budgetType}
               />
             </Card>
             <div className="mt-3 small text-white-50">
@@ -137,7 +135,7 @@ export default function Dashboard() {
 
         <AddTravelForm
           show={showForm}
-          onHide={()=>{setShowForm(false); setEditing(null);}}
+          onHide={() => { setShowForm(false); setEditing(null); }}
           onSave={save}
           initial={editing}
         />
