@@ -67,7 +67,7 @@ export default function BudgetChart({ plannedTotal, actualTotal, budgetType }) {
             margin: 0,
             fontSize: "0.8rem",
             opacity: 0.9,
-            color: diff >= 0 ? "#00ff88" : "#ff4d4d", // green for savings, red for overspent
+            color: diff >= 0 ? "rgb(34 0 255);" : "#ff4d4d", // green for savings, red for overspent
           }}
         >
           {status}: {Math.abs(diff)}
