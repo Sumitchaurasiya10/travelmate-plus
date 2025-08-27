@@ -27,7 +27,10 @@ export default function Dashboard() {
     setBudget(b.data.data);
   };
 
-  useEffect(() => { load(); /* eslint-disable-next-line */ }, [filter, budgetType]);
+ useEffect(() => {
+  load();
+}, [filter, budgetType, load]);
+
 
   // ✅ Save function
   const save = async (form) => {
