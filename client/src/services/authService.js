@@ -1,22 +1,29 @@
 import API from "./api";
 
-// Register
+// REGISTER
 export const register = async (name, email, password) => {
   const res = await API.post("/auth/register", { name, email, password });
-  // Save both token and user properly
-  localStorage.setItem(
-    "user",
-    JSON.stringify({ token: res.data.token, ...res.data.user })
-  );
-  return res.data;
+
+  // Save proper structure
+  const userData = {
+    token: res.data.token,
+    user: res.data.user
+  };
+
+  localStorage.setItem("user", JSON.stringify(userData));
+  return userData;
 };
 
-// Login
+// LOGIN
 export const login = async (email, password) => {
   const res = await API.post("/auth/login", { email, password });
-  localStorage.setItem(
-    "user",
-    JSON.stringify({ token: res.data.token, ...res.data.user })
-  );
-  return res.data;
+
+  // Save proper structure
+  const userData = {
+    token: res.data.token,
+    user: res.data.user
+  };
+
+  localStorage.setItem("user", JSON.stringify(userData));
+  return userData;
 };
